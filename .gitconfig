@@ -1,0 +1,17 @@
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	cp = cherry-pick
+	rb = rebase
+[core]
+    editor = nvim
+    pager = delta --theme='gruvbox'
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    line-numbers = true
+    side-by-side = true

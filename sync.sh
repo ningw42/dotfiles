@@ -1,6 +1,7 @@
 #! /bin/bash
 
 cp ~/.zshrc .
+cp ~/.gitconfig .
 cp ~/.tmux.conf .
 cp ~/.spaceship.zsh .
 cp ~/.p10k.zsh .
