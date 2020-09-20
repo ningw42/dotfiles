@@ -23,17 +23,29 @@ zinit light-mode for \
 
 
 # Plugins
-zinit snippet OMZ::lib/completion.zsh
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-# zinit light zsh-users/zsh-syntax-highlighting
-zinit light zdharma/fast-syntax-highlighting
-# sudo with ESC-ESC
-zinit light hcgraf/zsh-sudo
 # powerlevel10k prompt
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
+# snippets from OhMyZsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::fzf			# requires fzf installed
+zinit snippet OMZP::autojump		# requires autojump installed
+zinit snippet OMZP::golang
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+
+# standalone plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit ice depth=1; zinit light 3v1n0/zsh-bash-completions-fallback
+
+# DO make sure syntax highlighting is loaded at last
+zinit light zdharma/fast-syntax-highlighting
+
 # Alias
+# replace vim with neovim
 alias vim=nvim
 # replace ls with exa
 alias ls=exa
@@ -51,19 +63,22 @@ if [[ `uname` == "Darwin" ]]; then
     # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
     # fzf managed by Homebrew
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     # autojump managed by Homebrew
-    [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+    # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 elif [[ `uname` == "Linux" ]]; then
     # Arch Linux specific
 
     # fzf managed by pacman
-    [[ -s /usr/share/fzf/key-bindings.zsh ]] && [[ -s /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh
+    # [[ -s /usr/share/fzf/key-bindings.zsh ]] && [[ -s /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh
     # autojump managed by yay
-    [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+    # [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 else
     echo "Unknown OS"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+autoload -Uz compinit; compinit
+
