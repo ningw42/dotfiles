@@ -80,5 +80,9 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# ZSH options
+setopt auto_cd
+
+# Generate completions
 autoload -Uz compinit; compinit
 
