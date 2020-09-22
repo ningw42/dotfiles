@@ -81,8 +81,16 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ZSH options
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 setopt auto_cd
 
 # Generate completions
 autoload -Uz compinit; compinit
+
+# Post-load config
+# Make sure 'safari' theme is choosen for fast-syntax-highlighting
+fast-theme safari > /dev/null
 
