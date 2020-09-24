@@ -4,6 +4,6 @@
 remotes=(kumiko mizore nozomi)
 
 for remote in ${remotes[@]}; do
-	rsync -r . $remote:~
+	rsync --exclude ".git" -r . $remote:~
 done
 
