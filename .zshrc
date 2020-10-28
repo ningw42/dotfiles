@@ -55,6 +55,10 @@ alias la="exa -lah"
 alias ..="cd .."
 alias ...="cd ../.."
 
+# Environment vaiables
+# EDITOR
+export EDITOR=nvim
+
 # Platform dependent plugins/configs
 if [[ `uname` == "Darwin" ]]; then
     # macOS specific

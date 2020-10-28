@@ -29,4 +29,9 @@ colorscheme gruvbox
 
 " vim-airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='minimalist'
+let g:airline_theme='gruvbox'
+
+" enable true color support
+if (has("termguicolors"))
+  set termguicolors
+endif
