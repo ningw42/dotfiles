@@ -85,11 +85,15 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ZSH options
+# enable zsh history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+# enable auto cd
 setopt auto_cd
+# restore emacs key bindings
+bindkey -e
 
 # Generate completions
 autoload -Uz compinit; compinit
