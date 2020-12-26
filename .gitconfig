@@ -1,12 +1,15 @@
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	cp = cherry-pick
-	rb = rebase
+    st = status
+    co = checkout
+    br = branch
+    cp = cherry-pick
+    rb = rebase
+    sw = switch
+
 [core]
     editor = nvim
     pager = delta --theme='gruvbox'
+
 [interactive]
     diffFilter = delta --color-only
 
@@ -15,3 +18,4 @@
     minus-color = "#340001"
     line-numbers = true
     side-by-side = true
+

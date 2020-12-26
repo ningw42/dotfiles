@@ -18,6 +18,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Initialize plugin system
 call plug#end()
 
+" plugin tweaks
+" do NOT hide quotes for JSON
+let g:vim_json_syntax_conceal=0
+
 " general
 set number          " line number
 set relativenumber  " relative line number

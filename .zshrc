@@ -30,11 +30,25 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::command-not-found
-zinit snippet OMZP::fzf			# requires fzf installed
-zinit snippet OMZP::autojump		# requires autojump installed
-zinit snippet OMZP::golang
-zinit snippet OMZP::git
 zinit snippet OMZP::sudo
+zinit snippet OMZP::fzf				# requires fzf installed
+zinit snippet OMZP::autojump			# requires autojump installed
+zinit snippet OMZP::golang 			# requires golang installed
+zinit snippet OMZP::git				# requires git installed
+zinit snippet OMZP::rsync			# requires rsync installed
+if [[ `uname` == "Darwin" ]]; then
+    # macOS specific
+    zinit snippet OMZP::sublime 		# made macOS specific since I barely use Linux GUI
+    zinit snippet OMZP::vscode 			# made macOS specific since I barely use Linux GUI
+    zinit ice svn; zinit snippet OMZP::osx	# use svn ice to obtain all sources for plugin
+elif [[ `uname` == "Linux" ]]; then
+    # Arch Linux specific
+    # This is the wrong way but Arch Linux is the default Linux distro for me
+    zinit snippet OMZP::systemd
+else
+    echo "Unknown OS"
+fi
+
 
 # standalone plugins
 zinit light zsh-users/zsh-autosuggestions
@@ -46,11 +60,11 @@ zinit light zdharma/fast-syntax-highlighting
 
 # Alias
 # replace vim with neovim
-alias vim=nvim
+alias vim="nvim"
 # replace ls with exa
-alias ls=exa
-alias ll="exa -lh"
-alias la="exa -lah"
+alias ls="exa"
+alias ll="exa -lgh" 	# long view with group and header
+alias la="exa -algh" 	# long view with group and header for all files/directories
 # navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -59,24 +73,15 @@ alias ...="cd ../.."
 # EDITOR
 export EDITOR=nvim
 
-# Platform dependent plugins/configs
+# Platform dependent configs
 if [[ `uname` == "Darwin" ]]; then
     # macOS specific
-
     # Homebrew bottles
     # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-    # fzf managed by Homebrew
-    # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-    # autojump managed by Homebrew
-    # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 elif [[ `uname` == "Linux" ]]; then
     # Arch Linux specific
-
-    # fzf managed by pacman
-    # [[ -s /usr/share/fzf/key-bindings.zsh ]] && [[ -s /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh
-    # autojump managed by yay
-    # [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+    # This is the wrong way but Arch Linux is the default Linux distro for me
 else
     echo "Unknown OS"
 fi
