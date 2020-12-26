@@ -8,14 +8,16 @@
 
 [core]
     editor = nvim
-    pager = delta --theme='gruvbox'
+    pager = delta
 
 [interactive]
     diffFilter = delta --color-only
 
+[diff]
+    colorMoved = default
+
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
     line-numbers = true
     side-by-side = true
+    syntax-theme = gruvbox
 
